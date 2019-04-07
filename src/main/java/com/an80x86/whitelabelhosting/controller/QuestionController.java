@@ -21,6 +21,11 @@ public class QuestionController {
         return questionRepository.findAll(pageable);
     }
 
+    @GetMapping("/question/{questionId}")
+    public Question getQuestions(@PathVariable Long questionId) {
+        return questionRepository.findById(questionId)
+                .orElseThrow(() -> new ResourceNotFoundException("Question not found with id " + questionId));
+    }
 
     @PostMapping("/questions")
     public Question createQuestion(@Valid @RequestBody Question question) {

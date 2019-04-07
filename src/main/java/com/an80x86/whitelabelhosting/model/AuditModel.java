@@ -25,15 +25,15 @@ public abstract class AuditModel implements Serializable {
     private Date createdAt;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "updated_at", nullable = false)
+    @Column(name = "updated_at", nullable = true)
     @LastModifiedDate
     private Date updatedAt;
 
     public AuditModel() {
         setCreatedAt(Calendar.getInstance().getTime());
 
-        Calendar calendar = new GregorianCalendar(1980,1,1);
-        setUpdatedAt(calendar.getTime());
+        //Calendar calendar = new GregorianCalendar(1980,1,1);
+        //setUpdatedAt(calendar.getTime());
     }
 
     public Date getCreatedAt() {
